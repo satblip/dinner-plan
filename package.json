@@ -1,0 +1,35 @@
+{
+  "name": "dinner-plan",
+  "version": "0.0.0",
+  "description": "Get a weekly dinner propositions.",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-plugin-transform-class-properties": "^6.8.0",
+    "babel-preset-es2016": "^6.0.11",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^4.0.0",
+    "gulp-util": "^3.0.7",
+    "gutil": "^1.6.4",
+    "jquery": "2.2.3",
+    "minifyify": "^7.3.3",
+    "path": "^0.12.7",
+    "react": "0.14.6",
+    "react-dom": "0.14.6",
+    "react-redux": "4.4.0",
+    "react-router": "1.0.3",
+    "redux": "3.3.1",
+    "run-sequence": "^1.1.5",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node",
+    "start": "gulp"
+  },
+  "author": "Didier Chartrain <copycut.design@gmail.com>",
+  "license": "MIT"
+}

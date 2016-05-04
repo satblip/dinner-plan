@@ -1,1 +1,1 @@
-# dinner-plan
+# Weekly Dinner Plan
