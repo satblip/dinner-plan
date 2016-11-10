@@ -1,0 +1,13 @@
+.header {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.inner {
+  background-color: #FFF;
+  padding: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
