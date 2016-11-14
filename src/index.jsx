@@ -31,9 +31,9 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path='/' component={Application}>
         <IndexRoute component={HomeScreen} />
-        <Route path='/weeks' component={AllWeeksList} />
-        <Route path='/weeks/:week' component={WeekList} />
-        <Route path='/weeks/:week/:day' component={RecipeDay} />
+        <Route path='/:month' component={AllWeeksList} />
+        <Route path='/:month/:week' component={WeekList} />
+        <Route path='/:month/:week/:day' component={RecipeDay} />
         <Route path='*' component={PageNotFound} />
       </Route>
     </Router>

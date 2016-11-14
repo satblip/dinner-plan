@@ -15,6 +15,7 @@ const mapStateToProps = reducers => ({
   weekDays: reducers.weekDays,
   weekEndDays: reducers.weekEndDays,
   currentDate: reducers.currentDate,
+  currtentStartWeek: reducers.currtentStartWeek,
   currentWeek: reducers.currentWeek,
   currentWeekFirstDay: reducers.currentWeekFirstDay,
   currentWeekLastDay: reducers.currentWeekLastDay

@@ -2,13 +2,14 @@ import * as constants from '../constants';
 
 const initialState = {
   currentDate: null,
+  currtentStartWeek: null,
   currentWeek: null,
   currentMonth: null,
   currentWeekFirstDay: null,
   currentWeekLastDay: null,
   recipes: [],
-  weekDays: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
-  weekEndDays: ['Samedi', 'Dimanche'],
+  weekDays: ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'],
+  weekEndDays: ['samedi', 'dimanche'],
   weeksRecipes: {}
 };
 
@@ -33,7 +34,7 @@ export default function populateWeek (state = initialState, action) {
       });
 
       const weeksRecipes = Object.assign({}, state.weeksRecipes, {
-        [state.currentWeek]: recipesForThisWeek
+        [state.currtentStartWeek]: recipesForThisWeek
       });
 
       return Object.assign({}, state, {
@@ -50,6 +51,7 @@ export default function populateWeek (state = initialState, action) {
     case constants.SET_CURRENT_DATE: {
       return Object.assign({}, state, {
         currentDate: action.currentDate,
+        currtentStartWeek: action.currtentStartWeek,
         currentWeek: action.currentWeek,
         currentWeekFirstDay: action.currentWeekFirstDay,
         currentWeekLastDay: action.currentWeekLastDay

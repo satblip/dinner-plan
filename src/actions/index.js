@@ -17,6 +17,7 @@ export const setCurrentDate = date => {
   return {
     type: constants.SET_CURRENT_DATE,
     currentDate: date.valueOf(),
+    currtentStartWeek: date.startOf('isoWeek').format('YYYY-MM-DD'),
     currentWeek: date.isoWeek(),
     currentWeekFirstDay: parseInt(date.format('Do'), 10),
     currentWeekLastDay: parseInt(date.add(6, 'days').format('Do'), 10)

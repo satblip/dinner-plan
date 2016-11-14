@@ -1,28 +1,30 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import style from './style.css';
 import moment from 'moment';
 
-export default class Content extends Component {
+export default withRouter(class Content extends Component {
   static propTypes = {
     actions: PropTypes.object,
     currentDate: PropTypes.number,
     currentWeek: PropTypes.number,
+    currtentStartWeek: PropTypes.string,
     currentWeekFirstDay: PropTypes.number,
     currentWeekLastDay: PropTypes.number,
     weeksRecipes: PropTypes.object,
-    history: PropTypes.object
+    router: PropTypes.object
   }
 
   populateWeek = () => {
     this.props.actions.populateWeek();
-    this.props.history.push(`/weeks/${this.props.currentWeek}`);
+    this.props.router.push(`/weeks/${this.props.currtentStartWeek}`);
   }
 
   render () {
     const {
       currentDate,
       currentWeek,
+      currtentStartWeek,
       currentWeekFirstDay,
       currentWeekLastDay,
       weeksRecipes
@@ -37,10 +39,10 @@ export default class Content extends Component {
       </div>
     );
 
-    if (weeksRecipes[currentWeek]) {
+    if (weeksRecipes[currtentStartWeek]) {
       homeButton = (
         <div>
-          <Link to={`/weeks/${currentWeek}`}>
+          <Link to={`/weeks/${currtentStartWeek}`}>
             Accéder aux recette de la semaine
           </Link>
         </div>
@@ -54,11 +56,9 @@ export default class Content extends Component {
         </h1>
         <h2>Semaine {currentWeek}</h2>
         <h3>{`(${currentWeekFirstDay}→${currentWeekLastDay})`}</h3>
-
         {homeButton}
-
         <p><Link to='/weeks'>Consulter la liste des semaines</Link></p>
       </div>
     );
   }
-}
+});

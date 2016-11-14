@@ -11,16 +11,18 @@ export default class WeekList extends Component {
   render () {
     const { week } = this.props.params;
     const { weeksRecipes } = this.props;
-
-    const weekList = weeksRecipes[week].map((day, index) => (
-      <li key={index}>
-        <Link to={`/weeks/${week}/${index}`}>
-          <strong>{day.day}</strong>
-          <br />
-          {day.name}
-        </Link>
-      </li>
-    ));
+    let weekList;
+    if (weeksRecipes[week]) {
+      weekList = weeksRecipes[week].map((dayItem, index) => (
+        <li key={index}>
+          <Link to={`/weeks/${week}/${dayItem.day}`}>
+            <strong>{dayItem.day}</strong>
+            <br />
+            {dayItem.name}
+          </Link>
+        </li>
+      ));
+    }
 
     return (
       <div className={style.weekList}>

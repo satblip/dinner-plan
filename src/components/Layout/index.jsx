@@ -10,15 +10,12 @@ export default class Layout extends Component {
     actions: PropTypes.object,
     weeksRecipes: PropTypes.object
   }
-
   render () {
-    const { children } = this.props;
-
     return (
       <div className={style.layout}>
         <Header {...this.props} />
         <div className={style.container}>
-          {React.cloneElement(children, {...this.props})}
+          {React.cloneElement(this.props.children, {...this.props})}
         </div>
       </div>
     );
