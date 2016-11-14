@@ -11,19 +11,15 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.json', '.js', '.jsx', '.css']
+    extensions: ['.js', '.jsx', '.css']
   },
   module: {
     loaders: [
       {
-        test: /\.json$/,
-        loader: 'json'
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loaders: [{
-          loader: 'babel',
+          loader: 'babel-loader',
           query: {
             presets: ['es2015', 'stage-0', 'react']
           }
@@ -37,12 +33,8 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      {
-        from: './src/recipes.json'
-      },
-      {
-        from: './src/index.html'
-      }
+      { from: './src/recipes.json' },
+      { from: './src/index.html' }
     ]),
     new CleanWebpackPlugin(['dist'], {
       exclude: ['.gitkeep']

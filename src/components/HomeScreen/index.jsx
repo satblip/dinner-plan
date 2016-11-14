@@ -1,58 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-// import json from '!json!../../recipes.json';
 import style from './style.css';
+import moment from 'moment';
 
 export default class Content extends Component {
-  constructor (state) {
-    super(state);
-    this.state = {
-      recipes: [],
-      recipesUsed: []
-    };
-  }
-
   static propTypes = {
-    weekDays: PropTypes.array,
-    weekEndDays: PropTypes.array
+    actions: PropTypes.object
   }
 
-  static defaultProps = {
-    weekDays: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
-    weekEndDays: ['Samedi', 'Dimanche']
+  populateWeek = () => {
+    const today = new Date();
+    const weekNumber = moment(today).week();
+    this.props.actions.populateWeek(weekNumber);
   }
-
-  // generateWeekRecipes () {
-  //   const recipes = json.recipes;
-  //   let recipesUnused = recipes;
-  //   let recipesToRender = [];
-  //
-  //   this.props.weekDays.map(day => {
-  //     const randomRecipe = Math.floor(Math.random() * recipesUnused.length);
-  //     const recipeItem = recipes[randomRecipe];
-  //     if (recipeItem) {
-  //       recipesUnused = recipesUnused.filter((e, i) => i !== randomRecipe);
-  //       recipesToRender = recipesToRender.concat([{
-  //         day,
-  //         isWeekEnd: this.props.weekEndDays.indexOf(day) !== -1,
-  //         name: recipeItem.name,
-  //         season: recipeItem.season
-  //       }]);
-  //     }
-  //   });
-  //
-  //   this.setState({
-  //     recipes,
-  //     recipesUnused,
-  //     recipesToRender
-  //   });
-  // }
 
   render () {
+    console.log(this.props);
     return (
       <div className={style.homeScreen}>
-        <h1>Home screen</h1>
-        <Link to='/weeks'>Weeks</Link>
+        <h1>HS</h1>
+        <p><button onClick={this.populateWeek}>POPULATE_WEEK</button></p>
+        <p><Link to='/weeks'>Weeks</Link></p>
       </div>
     );
   }

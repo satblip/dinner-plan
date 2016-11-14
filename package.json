@@ -17,6 +17,7 @@
     "redux": "^3.6.0"
   },
   "devDependencies": {
+    "axios": "^0.15.2",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.5",
@@ -25,14 +26,17 @@
     "babel-preset-stage-0": "^6.16.0",
     "clean-webpack-plugin": "^0.1.13",
     "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.25.0",
     "eslint": "^3.8.1",
     "eslint-plugin-react": "^6.4.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.22.0",
-    "json-loader": "^0.5.4",
+    "moment": "^2.16.0",
+    "redux-thunk": "^2.1.0",
     "source-map-loader": "^0.1.5",
-    "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.9"
+    "style-loader": "^0.13.1",
+    "webpack": "^2.1.0-beta.26",
+    "webpack-dev-server": "^2.1.0-beta.10"
   },
   "semistandard": {
     "parser": "babel-eslint",

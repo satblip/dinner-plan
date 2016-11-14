@@ -5,7 +5,8 @@ import style from './style.css';
 export default class Layout extends Component {
   static propTypes = {
     children: PropTypes.object,
-    params: PropTypes.object
+    params: PropTypes.object,
+    actions: PropTypes.object
   }
 
   render () {
@@ -14,7 +15,7 @@ export default class Layout extends Component {
       <div className={style.layout}>
         <Header activePage={params} />
         <div className={style.container}>
-          {children}
+          {React.cloneElement(children, {...this.props})}
         </div>
       </div>
     );
