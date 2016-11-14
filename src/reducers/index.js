@@ -1,39 +1,45 @@
 import * as constants from '../constants';
 
 const initialState = {
-  weekRecipes: [],
+  currentDate: null,
+  currtentStartWeek: null,
+  currentWeek: null,
+  currentMonth: null,
+  currentWeekFirstDay: null,
+  currentWeekLastDay: null,
   recipes: [],
-  weekDays: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
-  weekEndDays: ['Samedi', 'Dimanche'],
-  weekNumber: null
+  weekDays: ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'],
+  weekEndDays: ['samedi', 'dimanche'],
+  weeksRecipes: {}
 };
 
 export default function populateWeek (state = initialState, action) {
   switch (action.type) {
     case constants.POPULATE_WEEK: {
-      if (action.weekNumber) {
-        let recipesUnused = state.recipes;
-        let weekRecipes = [];
+      let recipesUnused = state.recipes;
+      let recipesForThisWeek = [];
 
-        state.weekDays.map(day => {
-          const randomRecipe = Math.floor(Math.random() * recipesUnused.length);
-          const recipe = recipesUnused[randomRecipe];
-          if (recipe) {
-            recipesUnused = recipesUnused.filter((e, i) => i !== randomRecipe);
-            weekRecipes = weekRecipes.concat([{
-              day,
-              isWeekEnd: state.weekEndDays.indexOf(day) !== -1,
-              name: recipe.name,
-              season: recipe.season
-            }]);
-          }
-        });
+      state.weekDays.map(day => {
+        const randomRecipe = Math.floor(Math.random() * recipesUnused.length);
+        const recipe = recipesUnused[randomRecipe];
+        if (recipe) {
+          recipesUnused = recipesUnused.filter((e, i) => i !== randomRecipe);
+          recipesForThisWeek.push({
+            day,
+            isWeekEnd: state.weekEndDays.indexOf(day) !== -1,
+            name: recipe.name,
+            season: recipe.season
+          });
+        }
+      });
 
-        return Object.assign({}, state, {
-          weekRecipes
-        });
-      }
-      return state;
+      const weeksRecipes = Object.assign({}, state.weeksRecipes, {
+        [state.currtentStartWeek]: recipesForThisWeek
+      });
+
+      return Object.assign({}, state, {
+        weeksRecipes
+      });
     }
 
     case constants.FETCH_DATA: {
@@ -42,9 +48,13 @@ export default function populateWeek (state = initialState, action) {
       });
     }
 
-    case constants.GET_CURRENT_WEEK_NUMBER: {
+    case constants.SET_CURRENT_DATE: {
       return Object.assign({}, state, {
-        weekNumber: action.weekNumber
+        currentDate: action.currentDate,
+        currtentStartWeek: action.currtentStartWeek,
+        currentWeek: action.currentWeek,
+        currentWeekFirstDay: action.currentWeekFirstDay,
+        currentWeekLastDay: action.currentWeekLastDay
       });
     }
 

@@ -10,11 +10,15 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = reducers => ({
-  weekRecipes: reducers.weekRecipes,
+  weeksRecipes: reducers.weeksRecipes,
   recipes: reducers.recipes,
   weekDays: reducers.weekDays,
   weekEndDays: reducers.weekEndDays,
-  weekNumber: reducers.weekNumber
+  currentDate: reducers.currentDate,
+  currtentStartWeek: reducers.currtentStartWeek,
+  currentWeek: reducers.currentWeek,
+  currentWeekFirstDay: reducers.currentWeekFirstDay,
+  currentWeekLastDay: reducers.currentWeekLastDay
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);

@@ -1,17 +1,27 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import style from './style.css';
 
 export default class RecipeDay extends Component {
   static propTypes = {
-    params: PropTypes.object
+    params: PropTypes.object,
+    weeksRecipes: PropTypes.object,
+    weekDays: PropTypes.array
   }
   render () {
-    const { params } = this.props;
+    const { day, week } = this.props.params;
+    const { weeksRecipes, weekDays } = this.props;
+    const index = weekDays.indexOf(day);
+    const weekForThisWeek = weeksRecipes[week];
+    if (!weekForThisWeek) {
+      return null;
+    }
+    const recipe = weeksRecipes[week][index];
+
     return (
       <div className={style.recipeDay}>
-        <h1>Recipe Day {params.day} for {params.week}</h1>
-        <p><Link to={`/weeks/${params.week}`}>Back to week</Link></p>
+        <h1>{recipe.day}</h1>
+        <h2>{recipe.name}</h2>
+        <h3>{recipe.season}</h3>
       </div>
     );
   }
