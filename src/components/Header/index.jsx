@@ -4,10 +4,15 @@ import style from './style.css';
 
 export default class Header extends Component {
   static propTypes = {
-    activePage: PropTypes.object
+    params: PropTypes.object,
+    location: PropTypes.object,
+    weeksRecipes: PropTypes.object
   }
   render () {
-    const { day, week } = this.props.activePage;
+    const { day, week } = this.props.params;
+    const { pathname } = this.props.location;
+    const { weeksRecipes } = this.props;
+
     let header = null;
     if (week) {
       header = (
@@ -15,20 +20,35 @@ export default class Header extends Component {
           <Link to='/weeks'>
             <button>‹</button>
           </Link>
-          {week}
+          Semaine {week}
         </div>
       );
     }
+
     if (day) {
+      const recipeForThisDay = weeksRecipes[week][day];
       header = (
         <div className={style.inner}>
           <Link to={`/weeks/${week}`}>
             <button>‹</button>
           </Link>
-          {day}
+          {recipeForThisDay.day}<br />
+          <small>{recipeForThisDay.name}</small>
         </div>
       );
     }
+
+    if (pathname === '/weeks') {
+      header = (
+        <div className={style.inner}>
+          <Link to={`/`}>
+            <button>‹</button>
+          </Link>
+          Historique
+        </div>
+      );
+    }
+
     return (
       <header className={style.header}>
         {header}

@@ -1,9 +1,8 @@
 import * as constants from '../constants';
 
-export const populateWeek = weekNumber => {
+export const populateWeek = () => {
   return {
-    type: constants.POPULATE_WEEK,
-    weekNumber
+    type: constants.POPULATE_WEEK
   };
 };
 
@@ -14,9 +13,12 @@ export const fetchData = data => {
   };
 };
 
-export const getCurrentWeekNumber = weekNumber => {
+export const setCurrentDate = date => {
   return {
-    type: constants.GET_CURRENT_WEEK_NUMBER,
-    weekNumber
+    type: constants.SET_CURRENT_DATE,
+    currentDate: date.valueOf(),
+    currentWeek: date.isoWeek(),
+    currentWeekFirstDay: parseInt(date.format('Do'), 10),
+    currentWeekLastDay: parseInt(date.add(6, 'days').format('Do'), 10)
   };
 };

@@ -4,17 +4,20 @@ import style from './style.css';
 
 export default class AllWeeksList extends Component {
   static propTypes = {
-    children: PropTypes.object
+    children: PropTypes.object,
+    weeksRecipes: PropTypes.object
   }
   render () {
+    const weekLinks = Object.keys(this.props.weeksRecipes)
+      .map((week, index) => (
+        <Link key={index} to={`/weeks/${week}`}>Semaine {week}</Link>
+      ));
+
     return (
       <div className={style.allWeeksList}>
         <h1>All Weeks List</h1>
         <p><Link to='/'>Back to Home Screen</Link></p>
-        <p><Link to='/weeks/week44'>Week 44</Link></p>
-        <p><Link to='/weeks/week45'>Week 45</Link></p>
-        <p><Link to='/weeks/week46'>Week 46</Link></p>
-        {this.props.children}
+        {weekLinks}
       </div>
     );
   }

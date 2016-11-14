@@ -5,22 +5,28 @@ import style from './style.css';
 export default class WeekList extends Component {
   static propTypes = {
     params: PropTypes.object,
-    children: PropTypes.object
+    children: PropTypes.object,
+    weeksRecipes: PropTypes.object
   }
   render () {
-    const { params } = this.props;
+    const { week } = this.props.params;
+    const { weeksRecipes } = this.props;
+
+    const weekList = weeksRecipes[week].map((day, index) => (
+      <li key={index}>
+        <Link to={`/weeks/${week}/${index}`}>
+          <strong>{day.day}</strong>
+          <br />
+          {day.name}
+        </Link>
+      </li>
+    ));
+
     return (
       <div className={style.weekList}>
-        <h1>WeekList: {params.week}</h1>
-        <p><Link to='/weeks'>Back to weeks</Link></p>
-        <p><Link to={`/weeks/${params.week}/lundi`}>Lundi</Link></p>
-        <p><Link to={`/weeks/${params.week}/mardi`}>Mardi</Link></p>
-        <p><Link to={`/weeks/${params.week}/mercredi`}>Mercredi</Link></p>
-        <p><Link to={`/weeks/${params.week}/jeudi`}>Jeudi</Link></p>
-        <p><Link to={`/weeks/${params.week}/vendredi`}>Vendredi</Link></p>
-        <p><Link to={`/weeks/${params.week}/samedi`}>Samedi</Link></p>
-        <p><Link to={`/weeks/${params.week}/dimanche`}>Dimanche</Link></p>
-        {this.props.children}
+        <ul>
+          {weekList}
+        </ul>
       </div>
     );
   }

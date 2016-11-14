@@ -4,14 +4,20 @@ import style from './style.css';
 
 export default class RecipeDay extends Component {
   static propTypes = {
-    params: PropTypes.object
+    params: PropTypes.object,
+    weeksRecipes: PropTypes.object
   }
   render () {
-    const { params } = this.props;
+    const { day, week } = this.props.params;
+    const { params, weeksRecipes } = this.props;
+    const data = weeksRecipes[week][day];
     return (
       <div className={style.recipeDay}>
-        <h1>Recipe Day {params.day} for {params.week}</h1>
-        <p><Link to={`/weeks/${params.week}`}>Back to week</Link></p>
+        <h1>{data.season}</h1>
+
+        <p>
+          <Link to={`/weeks/${params.week}`}>Back to week</Link>
+        </p>
       </div>
     );
   }
