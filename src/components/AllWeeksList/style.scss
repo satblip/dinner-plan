@@ -1,0 +1,33 @@
+@import '../../styles/config.scss';
+
+.allWeeksList {
+  @include gradient;
+  padding: 15px;
+}
+
+.link {
+  position: relative;
+  display: block;
+  font-size: 20px;
+  line-height: 1;
+  color: $Apricot;
+  text-decoration: none;
+  padding: 10px 30px 10px 0;
+  font-weight: bold;
+}
+
+.chevron {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.month {
+  float: right;
+  font-weight: normal;
+  text-transform: capitalize;
+  opacity: 0.5;
+}

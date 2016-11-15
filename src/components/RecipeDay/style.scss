@@ -1,0 +1,42 @@
+@import '../../styles/config.scss';
+
+.recipeDay {
+  background-color: $White;
+  padding: 0 15px 15px 15px;
+}
+
+.header {
+  display: block;
+  background-color: $OldLace;
+  padding: 15px;
+  margin: 0 -15px;
+  color: $Apricot;
+}
+
+.title {
+  padding: 0;
+  margin: 0;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+.subtitle {
+  @extend .title;
+  font-size: 20px;
+}
+
+.note {
+  @extend .title;
+  font-size: 15px;
+  padding-top: 5px;
+}
+
+.content {
+  clear: both;
+  color: $ShipCove;
+  font-size: 15px;
+  line-height: 1.33;
+  padding: 15px 0;
+}

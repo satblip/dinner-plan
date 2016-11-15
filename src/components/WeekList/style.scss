@@ -1,0 +1,47 @@
+@import '../../styles/config.scss';
+
+.weekList {
+  @include gradient;
+  padding: 15px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.listItem {
+  display: block;
+  position: relative;
+  padding-right: 30px;
+
+  &.weekend .link {
+    color: $ShipCove;
+  }
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  color: $Apricot;
+  padding: 10px 0;
+}
+
+.linkDay {
+  font-size: 30px;
+}
+
+.linkName {
+  font-size: 20px;
+}
+
+.chevron {
+  display: block;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}

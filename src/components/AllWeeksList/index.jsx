@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import style from './style.css';
+import style from './style.scss';
 import moment from 'moment';
+import chevronRight from '../../images/chevron-right.svg';
+import InlineSVG from 'svg-inline-react';
 
 export default class AllWeeksList extends Component {
   static propTypes = {
@@ -14,15 +16,16 @@ export default class AllWeeksList extends Component {
         const month = moment(week).format('MMMM');
         const weekNumber = moment(week).isoWeek();
         return (
-          <Link key={index} to={`/weeks/${week}`}>
-            Semaine {`${weekNumber} - ${month}`}
+          <Link className={style.link} key={index} to={`/weeks/${week}`}>
+            Semaine {weekNumber}
+            <span className={style.month}>{month}</span>
+            <InlineSVG className={style.chevron} src={chevronRight} />
           </Link>
         );
       });
 
     return (
       <div className={style.allWeeksList}>
-        <h1>All Weeks List</h1>
         {weekLinks}
       </div>
     );
