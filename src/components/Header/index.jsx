@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import style from './style.css';
+import style from './style.scss';
 import moment from 'moment';
 import classnames from 'classnames';
+import chevronLeft from '../../images/chevron-left.svg';
+import InlineSVG from 'svg-inline-react';
 
 export default class Header extends Component {
   static propTypes = {
@@ -16,16 +18,21 @@ export default class Header extends Component {
     const { day, week } = this.props.params;
     const { pathname } = this.props.location;
     const { weekDays, weekEndDays } = this.props;
+    const chevron = <InlineSVG className={style.chevron} src={chevronLeft} />;
 
     let header = null;
     if (week) {
       header = (
         <div className={style.inner}>
           <Link to='/weeks'>
-            <button>‹</button>
+            {chevron}
           </Link>
-          {moment(week).format('MMMM')}<br />
-          Semaine {moment(week).isoWeek()}
+          <div className={style.title}>
+            {moment(week).format('MMMM')}
+          </div>
+          <div className={style.subtitle}>
+            Semaine {moment(week).isoWeek()}
+          </div>
         </div>
       );
     }
@@ -36,27 +43,32 @@ export default class Header extends Component {
         const isActive = weekDays[index] === day;
         const isWeekEnd = weekEndDays.indexOf(dayItem) !== -1;
         return (
-          <Link
-            className={classnames(
-              style.dayCircles,
-              {
-                [style.active]: isActive,
-                [style.weekend]: isWeekEnd
-              }
-            )}
+          <Link className={classnames(
+            style.dayCircles,
+            {
+              [style.active]: isActive,
+              [style.weekend]: isWeekEnd
+            })}
             key={index}
             to={`/weeks/${week}/${dayItem}`}>
-            <span>{dayInNumber}</span>
+            <div className={style.dayCirclesNumber}>
+              {dayInNumber}
+            </div>
           </Link>
         );
       });
+
       header = (
         <div className={style.inner}>
-          <Link to={`/weeks/${week}`}>
-            <button>‹</button>
+          <Link className={style.link} to={`/weeks/${week}`}>
+            {chevron}
           </Link>
-          {moment(week).format('MMMM')}<br />
-          {dayCircles}
+          <div className={style.titleTop}>
+            {moment(week).format('MMMM')}
+          </div>
+          <div className={style.dayCirclesContainer}>
+            {dayCircles}
+          </div>
         </div>
       );
     }
@@ -64,10 +76,12 @@ export default class Header extends Component {
     if (pathname === '/weeks') {
       header = (
         <div className={style.inner}>
-          <Link to={`/`}>
-            <button>‹</button>
+          <Link className={style.link} to='/'>
+            {chevron}
           </Link>
-          Historique
+          <div className={style.title}>
+            Historique
+          </div>
         </div>
       );
     }

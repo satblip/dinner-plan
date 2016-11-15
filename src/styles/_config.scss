@@ -1,0 +1,15 @@
+// Colors
+$White: #FFF;
+$Black: #000;
+$OldLace: #FDF5E8;
+$Givry: #F8E7CC;
+$Apricot: #EA876C;
+$ShipCove: #708CB9;
+$FrenchPass: #B6E7FF;
+
+@mixin gradient {
+  background-color: $OldLace;
+  background-image: -webkit-linear-gradient($OldLace 0%, $White 100%);
+  background-image: -o-linear-gradient($OldLace 0%, $White 100%);
+  background-image: linear-gradient($OldLace 0%, $White 100%);
+}

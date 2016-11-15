@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, withRouter } from 'react-router';
-import style from './style.css';
+import style from './style.scss';
 import moment from 'moment';
+import logo from '../../images/logo.svg';
+import InlineSVG from 'svg-inline-react';
 
 export default withRouter(class Content extends Component {
   static propTypes = {
@@ -31,9 +33,11 @@ export default withRouter(class Content extends Component {
     } = this.props;
 
     let homeButton = (
-      <div>
-        <p>Il n'y a aucune recettes pour cette semaine.</p>
-        <button onClick={this.populateWeek}>
+      <div className={style.buttonContainer}>
+        <div className={style.note}>
+          Il n'y a aucune recettes pour cette semaine.
+        </div>
+        <button className={style.button} onClick={this.populateWeek}>
           Générer une semaine de recettes
         </button>
       </div>
@@ -41,8 +45,8 @@ export default withRouter(class Content extends Component {
 
     if (weeksRecipes[currtentStartWeek]) {
       homeButton = (
-        <div>
-          <Link to={`/weeks/${currtentStartWeek}`}>
+        <div className={style.buttonContainer}>
+          <Link className={style.button} to={`/weeks/${currtentStartWeek}`}>
             Accéder aux recette de la semaine
           </Link>
         </div>
@@ -51,13 +55,27 @@ export default withRouter(class Content extends Component {
 
     return (
       <div className={style.homeScreen}>
+        <div className={style.logo}>
+          <InlineSVG src={logo} />
+          <div className={style.logoCurrentWeek}>
+            {currentWeek}
+          </div>
+        </div>
+
         <h1 className={style.month}>
           {moment(currentDate).format('MMMM')}
         </h1>
-        <h2>Semaine {currentWeek}</h2>
-        <h3>{`(${currentWeekFirstDay}→${currentWeekLastDay})`}</h3>
+        <h2 className={style.week}>
+          Semaine {currentWeek} {
+            `(${currentWeekFirstDay}→${currentWeekLastDay})`
+          }
+        </h2>
+
         {homeButton}
-        <p><Link to='/weeks'>Consulter la liste des semaines</Link></p>
+
+        <Link className={style.link} to='/weeks'>
+          Consulter la liste des semaines
+        </Link>
       </div>
     );
   }

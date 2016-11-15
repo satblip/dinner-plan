@@ -1,0 +1,88 @@
+@import '../../styles/config.scss';
+
+.homeScreen {
+  @include gradient;
+  text-align: center;
+  min-height: 100vh;
+  margin-top: -90px;
+  padding: 90px 30px 15px;
+}
+
+.logo {
+  width: 175px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+.logoCurrentWeek {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  font-size: 45px;
+  padding-top: 28%;
+  color: $OldLace;
+}
+
+.month {
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+  line-height: 1;
+  color: $ShipCove;
+  font-weight: normal;
+}
+
+.week {
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1;
+  color: $ShipCove;
+  font-weight: normal;
+}
+
+.buttonContainer {
+  padding: 40px 0;
+}
+
+.button {
+  display: block;
+  padding: 10px 15px;
+  border: none;
+  background-color: $Apricot;
+  color: $Givry;
+  font-size: 15px;
+  line-height: 1;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 300ms ease;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $White;
+    background-color: $ShipCove;
+  }
+}
+
+.link {
+  color: $Apricot;
+  display: block;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $ShipCove;
+  }
+}
+
+.note {
+  padding-bottom: 10px;
+  color: $ShipCove;
+}

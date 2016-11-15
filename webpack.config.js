@@ -11,7 +11,7 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx', '.css']
+    extensions: ['.js', '.jsx', '.scss']
   },
   module: {
     loaders: [
@@ -26,8 +26,15 @@ module.exports = {
         }]
       },
       {
-        test: /\.css$/,
-        loaders: ['style-loader', 'css-loader?modules&localIdentName=[local]-[hash:base64:5]']
+        test: /\.(s)css$/,
+        loaders: [
+          'style-loader',
+          'css-loader?modules&localIdentName=[local]-[hash:base64:5]!sass-loader'
+        ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   },
