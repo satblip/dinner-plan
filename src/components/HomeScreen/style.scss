@@ -62,24 +62,13 @@
   border-radius: 5px;
   text-decoration: none;
   transition: all 300ms ease;
-
-  &:hover,
-  &:focus,
-  &:active {
-    color: $White;
-    background-color: $ShipCove;
-  }
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .link {
   color: $Apricot;
   display: block;
-
-  &:hover,
-  &:focus,
-  &:active {
-    color: $ShipCove;
-  }
 }
 
 .note {
